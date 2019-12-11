@@ -2,8 +2,11 @@
 function Contact(first, last) {
     this.firstName = first;
     this.lastName = last;
-}
-
+  }
+  
+  Contact.prototype.fullName = function() {
+    return this.firstName + " " + this.lastName;
+  }
 // user interface logic
 $(document).ready(function () {
     $("form#new-contact").submit(function (event) {
@@ -16,6 +19,7 @@ $(document).ready(function () {
 
         $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
         // $('ul#contacts').append("<li><span class='contact'>" + newContact.lastName + "</span></li>");
+        $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
         $("input#new-first-name").val("");
         $("input#new-last-name").val("");
@@ -28,3 +32,12 @@ $(document).ready(function () {
         });
     });
 });
+
+// function Contact(first, last) {
+//     this.firstName = first;
+//     this.lastName = last;
+//   }
+// Original contact piece before i added 
+
+// Contact.prototype.fullName = function() {
+//     return this.firstName + " " + this.lastName;
